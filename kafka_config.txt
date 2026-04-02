@@ -1,0 +1,10 @@
+#Kafka spring.kafka.admin.fail-fast=true kafka.bootstrap-servers=LXUATEDPA7.GTJA.COM.UAT:9092,LXUATEDPA8.GTJA.COM.UAT:9092,LXUATEDPA9.GTJA.COM.UAT:9092 kafka.properties.security.protocol=SASL_PLAINTEXT kafka.properties.sasl.mechanism=SCRAM-SHA-256 kafka.consumer.group-id=gjqe-archer-sit kafka.username=gjqe_appadmin kafka.password=uat123245 kafka.topic.to-archer=gjqe.to-archer kafka.topic.from-archer=gjqe.from-archer kafka.message.header.environment=SIT
+
+
+docker run -it -p 8080:8080 ^
+  -e KAFKA_CLUSTERS_0_NAME=UAT ^
+  -e KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=LXUATEDPA7.GTJA.COM.UAT:9092,LXUATEDPA8.GTJA.COM.UAT:9092,LXUATEDPA9.GTJA.COM.UAT:9092 ^
+  -e KAFKA_CLUSTERS_0_PROPERTIES_SECURITY_PROTOCOL=SASL_PLAINTEXT ^
+  -e KAFKA_CLUSTERS_0_PROPERTIES_SASL_MECHANISM=SCRAM-SHA-256 ^
+  -e KAFKA_CLUSTERS_0_PROPERTIES_SASL_JAAS_CONFIG=org.apache.kafka.common.security.scram.ScramLoginModule required username=\"gjqe_appadmin\" password=\"uat123245\"; ^
+  gtja-docker-virtual.dev.jfrog.gtjai.net/provectuslabs/kafka-ui:latest
